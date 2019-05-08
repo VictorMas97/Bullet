@@ -2,7 +2,7 @@
 
 namespace bullet
 {
-	std::shared_ptr< glt::Render_Node > Scene::create_scene()
+	std::shared_ptr< glt::Render_Node > Scene::create_scene(btDiscreteDynamicsWorld & world)
 	{
 		// Se crean los elementos (nodos) y la escena a la que se añadirán:
 
@@ -11,8 +11,10 @@ namespace bullet
 		std::shared_ptr< glt::Camera      > camera(new glt::Camera(20.f, 1.f, 50.f, 1.f));
 		std::shared_ptr< glt::Light       > light(new glt::Light);
 
-		// Se añaden los nodos a la escena:
+		//gameObjects["ball"] = std::make_shared<GameObject>(world, )
 
+		// Se añaden los nodos a la escena:
+		
 		scene->add("sphere", model);
 		scene->add("camera", camera);
 		scene->add("light", light);

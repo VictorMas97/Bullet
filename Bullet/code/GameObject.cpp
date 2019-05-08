@@ -6,7 +6,7 @@
 namespace bullet
 {
 	GameObject::GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr<btCollisionShape>& given_shape, const btVector3 & initial_position, float bounce, float mass)
-		                : shape(given_shape)
+		                  : shape(given_shape)
 	{
 		// Se establece la posición inicial:
 
@@ -32,7 +32,7 @@ namespace bullet
 	}
 
 	GameObject::GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr<btCollisionShape>& given_shape, const btVector3 & initial_position, float bounce)
-						: shape(given_shape)
+						  : shape(given_shape)
 	{
 		// Se establece la posición inicial:
 

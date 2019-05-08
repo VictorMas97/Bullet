@@ -52,8 +52,8 @@ namespace bullet
 
 		// Create and configure the physiscs world:
 
-		std::shared_ptr< btDiscreteDynamicsWorld > dynamicsWorld(new btDiscreteDynamicsWorld(&collisionDispatcher, &overlappingPairCache,
-																							 &constraintSolver, &collisionConfiguration));
+		std::shared_ptr< btDiscreteDynamicsWorld > dynamicsWorld = std::make_shared<btDiscreteDynamicsWorld>(&collisionDispatcher, &overlappingPairCache,
+																							 &constraintSolver, &collisionConfiguration);
 
 		//dynamicsWorld{ new btDiscreteDynamicsWorld(&collisionDispatcher, &overlappingPairCache, &constraintSolver, &collisionConfiguration) };
 
@@ -62,8 +62,8 @@ namespace bullet
 		dynamicsWorld->setGravity(btVector3(0, -10, 0));
 
 		//dynamicsWorld->stepSimulation(1.f / 60.f);
-
-		return std::shared_ptr<btDiscreteDynamicsWorld>(dynamicsWorld);
+		
+		return dynamicsWorld;
 	}
 }
 

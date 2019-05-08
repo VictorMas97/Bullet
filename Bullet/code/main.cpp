@@ -1,15 +1,9 @@
 #include "Scene.hpp"
 #include "GameObject.hpp"
 #include "World.hpp"
-//#include <Light.hpp>
-//#include <Model_Obj.hpp>
-//#include <Render_Node.hpp>
-
 #include <SFML/Window.hpp>
 #include <btBulletDynamicsCommon.h>
 
-class GameObject;
-class World;
 
 int main ()
 {
@@ -53,6 +47,7 @@ int main ()
 	#pragma endregion*/
 
 	#pragma region RIGID BODIES SETUP
+	
 	
     /*// Keep track of the shapes, states and rigid bodies.
     // Make sure to reuse collision shapes among rigid bodies whenever possible!
@@ -151,7 +146,7 @@ int main ()
 
     // Se crea y se configura la escena:
 
-	std::shared_ptr< glt::Render_Node > scene = bullet::Scene::create_scene();
+	std::shared_ptr< glt::Render_Node > scene = bullet::Scene::create_scene(*dynamicsWorld);
 
 	bullet::Scene::configure_scene (*scene);
 
