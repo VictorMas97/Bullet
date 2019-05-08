@@ -11,13 +11,18 @@ namespace bullet
 
 	public:
 
-		//std::shared_ptr< btDiscreteDynamicsWorld > dynamicsWorld;
-
 		World(btVector3 gravity);
 
-		static std::shared_ptr< btDiscreteDynamicsWorld > create_world();
+		void stepSimulation(btScalar timeStep);
 
-		//static std::shared_ptr< btDiscreteDynamicsWorld > create_world(btVector3 gravity);
+		void reset();
 
+		std::shared_ptr< btDiscreteDynamicsWorld > world;
+
+		//std::shared_ptr< btDiscreteDynamicsWorld > create_world(btVector3 gravity);
+
+		//World(btVector3 gravity);
+		
+		//std::shared_ptr< btDiscreteDynamicsWorld > dynamicsWorld;
 	};		
 }

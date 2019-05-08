@@ -19,7 +19,7 @@ namespace bullet
 		btDefaultMotionState state;
 
 	public:
-
+			   
 		GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr< btCollisionShape > & given_shape, const btVector3 & initial_position, float bounce, float mass);
 			
 

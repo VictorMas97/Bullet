@@ -7,7 +7,7 @@
 
 int main ()
 {
-	std::shared_ptr< btDiscreteDynamicsWorld > dynamicsWorld = bullet::World::create_world();
+	//std::shared_ptr< btDiscreteDynamicsWorld > dynamicsWorld = bullet::World::create_world(btVector3(0, -10, 0));
 
 	/*
 	#pragma region PHYSISCS WORLD INITIALIZATION
@@ -46,10 +46,10 @@ int main ()
     dynamicsWorld->setGravity (btVector3(0, -10, 0));
 	#pragma endregion*/
 
-	#pragma region RIGID BODIES SETUP
+	/*#pragma region RIGID BODIES SETUP
 	
 	
-    /*// Keep track of the shapes, states and rigid bodies.
+    // Keep track of the shapes, states and rigid bodies.
     // Make sure to reuse collision shapes among rigid bodies whenever possible!
 
 	std::vector< std::shared_ptr< btRigidBody          > > rigidBodies;
@@ -117,9 +117,9 @@ int main ()
         rigidBodies    .push_back (sphere_body);
         motionStates   .push_back (state);
         collisionShapes.push_back (shape);
-    }*/
+    }
 
-	#pragma endregion
+	#pragma endregion*/
 
 	#pragma region SIMULATION
 
@@ -146,15 +146,19 @@ int main ()
 
     // Se crea y se configura la escena:
 
-	std::shared_ptr< glt::Render_Node > scene = bullet::Scene::create_scene(*dynamicsWorld);
+	bullet::Scene scene{ btVector3(0, -10, 0) };
 
-	bullet::Scene::configure_scene (*scene);
+	scene.reset_viewport(window);
 
-    glt::Node * sphere_model = scene->get ("sphere");  // Get the model 3D in the Scene class over the Model class??
+	//std::shared_ptr< glt::Render_Node > scene = bullet::Scene::create_scene(*dynamicsWorld);
+
+	//bullet::Scene::configure_scene (*scene);
+
+    //glt::Node * sphere_model = scene->get ("sphere");  // Get the model 3D in the Scene class over the Model class??
 
     // Se inicializan algunos elementos de OpenGL:
 
-	bullet::Scene::reset_viewport (window, *scene);
+	//bullet::Scene::reset_viewport (window, *scene);
 
     glClearColor (0.2f, 0.2f, 0.2f, 1.f);
 
@@ -179,15 +183,16 @@ int main ()
 
                 case sf::Event::Resized:
                 {
-					bullet::Scene::reset_viewport (window, *scene);
+					//bullet::Scene::reset_viewport (window, *scene);
+					scene.reset_viewport(window);
                     break;
                 }
             }
         }
 
         // Perform the simulation:  // Scene??
-
-        //dynamicsWorld->stepSimulation (1.f / 60.f);  
+		scene.update(1.f / 60.f);
+        //dynamicsWorld->stepSimulation (1.f / 60.f);    // Ángel
 
         // Apply the physics transform to the graphics model:  // Model??
 
@@ -199,17 +204,17 @@ int main ()
 
         physics_transform.getOpenGLMatrix (glm::value_ptr(graphics_transform));
 
-        sphere_model->set_transformation (graphics_transform);
+        //sphere_model->set_transformation (graphics_transform);
 
-        sphere_model->scale (0.5f);
+        //sphere_model->scale (0.5f);
 
         // Render the scene:
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        sphere_model->rotate_around_y (0.01f);
+        //sphere_model->rotate_around_y (0.01f);
 
-        scene->render ();
+        scene.render();
 
         window.display ();
     }
@@ -217,7 +222,7 @@ int main ()
 
     // Se debe destruir el mundo físico antes de que se destruyan los cuerpos rígidos:
 
-    dynamicsWorld.reset ();
+    scene.reset ();
 
     return EXIT_SUCCESS;
 	#pragma endregion

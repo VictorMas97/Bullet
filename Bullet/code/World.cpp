@@ -1,8 +1,9 @@
 #include "World.hpp"
+#include <iostream>
 
 namespace bullet
 {
-	World::World(btVector3 gravity)
+	/*World::World(btVector3 gravity)
 	{
 		// Collision configuration contains default setup for memory, collision setup.
 		// Advanced users can create their own configuration.
@@ -29,10 +30,13 @@ namespace bullet
 		//dynamicsWorld{ new btDiscreteDynamicsWorld(&collisionDispatcher, &overlappingPairCache, &constraintSolver, &collisionConfiguration) };
 
 		dynamicsWorld->setGravity(gravity);
-	}
+	}*/
 
-	std::shared_ptr<btDiscreteDynamicsWorld> World::create_world()
+	World::World(btVector3 gravity)
 	{
+
+		std::cout << "Dinamyc world" << std::endl;
+
 		// Collision configuration contains default setup for memory, collision setup.
 		// Advanced users can create their own configuration.
 
@@ -52,18 +56,18 @@ namespace bullet
 
 		// Create and configure the physiscs world:
 
-		std::shared_ptr< btDiscreteDynamicsWorld > dynamicsWorld = std::make_shared<btDiscreteDynamicsWorld>(&collisionDispatcher, &overlappingPairCache,
-																							 &constraintSolver, &collisionConfiguration);
+		world = std::make_shared<btDiscreteDynamicsWorld>(&collisionDispatcher, &overlappingPairCache, &constraintSolver, &collisionConfiguration);
 
-		//dynamicsWorld{ new btDiscreteDynamicsWorld(&collisionDispatcher, &overlappingPairCache, &constraintSolver, &collisionConfiguration) };
+		world->setGravity(gravity);
+	}
+	void World::stepSimulation(btScalar timeStep)
+	{
+		world->stepSimulation(timeStep);
+	}
 
-		//dynamicsWorld->setGravity(gravity);
-
-		dynamicsWorld->setGravity(btVector3(0, -10, 0));
-
-		//dynamicsWorld->stepSimulation(1.f / 60.f);
-		
-		return dynamicsWorld;
+	void World::reset()
+	{
+		world.reset();
 	}
 }
 

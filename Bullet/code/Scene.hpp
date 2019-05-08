@@ -13,13 +13,24 @@ namespace bullet
 	{
 	public:
 
-		static std::shared_ptr< glt::Render_Node > create_scene(btDiscreteDynamicsWorld & world);
+		Scene(btVector3 gravity);
 
-		static void configure_scene(glt::Render_Node & scene);
+		//std::shared_ptr< glt::Render_Node > create_scene(btDiscreteDynamicsWorld & world);
 
-		static void reset_viewport(const sf::Window & window, glt::Render_Node & scene);
+		//void configure_scene();
 
-		//static World * world;
+		void reset_viewport(const sf::Window & window);
+
+		void update(btScalar timeStep);
+
+		void render();
+
+		void reset();
+
+
+		std::shared_ptr< World > dynamicWorld;
+
+		std::shared_ptr< glt::Render_Node > renderNode;
 
 		std::map<std::string, std::shared_ptr<GameObject>> gameObjects;
 	};
