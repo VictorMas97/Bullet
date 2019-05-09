@@ -33,25 +33,10 @@ namespace bullet
 		body->setRestitution(bounce);
 
 		world.addRigidBody(body.get());
-
-		/*//scene->get("sphere");
-
-
-		// Apply the physics transform to the graphics model:
-
-		//body->getMotionState ()->getWorldTransform (physics_transform);
-
-		//physics_transform.getOpenGLMatrix(glm::value_ptr(graphics_transform));
-
-		//sphere_model->set_transformation (graphics_transform);
-
-		//sphere_model->scale (0.5f);*/
 	}
 
 	void GameObject::Set_physic_transform()
 	{
-		//std::cout << "Update" << std::endl;
-
 		body->getMotionState()->getWorldTransform(physics_transform);
 
 		physics_transform.getOpenGLMatrix(glm::value_ptr(graphics_transform));
@@ -60,24 +45,4 @@ namespace bullet
 
 		sphere_model->scale(0.5f);
 	}
-
-	/*GameObject::GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr<btCollisionShape> given_shape, const btVector3 & initial_position, float bounce)
-						  : shape(given_shape)
-	{
-		// Se establece la posición inicial:
-
-		btTransform transform;
-		transform.setIdentity();
-		transform.setOrigin(initial_position);
-
-		state.setWorldTransform(transform);
-
-		btRigidBody::btRigidBodyConstructionInfo info(0, &state, shape.get());
-
-		body.reset(new btRigidBody(info));
-
-		body->setRestitution(bounce);
-
-		world.addRigidBody(body.get());
-	}*/
 }

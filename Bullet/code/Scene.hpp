@@ -29,6 +29,6 @@ namespace bullet
 
 		std::map<std::string, std::shared_ptr<GameObject>> gameObjects;
 
-		glt::Node * sphere_model;
+		//glt::Node * sphere_model;
 	};
 }
