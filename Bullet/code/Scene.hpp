@@ -15,10 +15,6 @@ namespace bullet
 
 		Scene(btVector3 gravity);
 
-		//std::shared_ptr< glt::Render_Node > create_scene(btDiscreteDynamicsWorld & world);
-
-		//void configure_scene();
-
 		void reset_viewport(const sf::Window & window);
 
 		void update(btScalar timeStep);
