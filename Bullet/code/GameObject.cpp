@@ -48,7 +48,7 @@ namespace bullet
 		//sphere_model->scale (0.5f);*/
 	}
 
-	void GameObject::Add_physic_transform()
+	void GameObject::Set_physic_transform()
 	{
 		//std::cout << "Update" << std::endl;
 

@@ -33,6 +33,6 @@ namespace bullet
 		GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr< btCollisionShape > given_shape, const btVector3 & initial_position, 
 																	 float bounce, float mass = 0.f, const std::string & obj_file_path = "");
 
-		void Add_physic_transform();
+		void Set_physic_transform();
 	};
 }

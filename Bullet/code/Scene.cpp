@@ -16,8 +16,8 @@ namespace bullet
 		std::shared_ptr< glt::Camera      > camera(new glt::Camera(20.f, 1.f, 50.f, 1.f));
 		std::shared_ptr< glt::Light       > light(new glt::Light);
 
-		//gameObjects["ground"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(50.f, 1.f, 50.f)), btVector3(0.f , -4.f, 0.f), 0.7f);
-		gameObjects["ball"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btSphereShape>(1.f), btVector3(0.f, 0.f, 0.f), 1.f, 1.f, "../../assets/sphere.obj");
+		gameObjects["ground"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(50.f, 1.f, 50.f)), btVector3(0.f , -4.f, 0.f), 0.7f);
+		gameObjects["ball"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btSphereShape>(1.f), btVector3(0.f, 10.f, 0.f), 1.f, 1.f, "../../assets/sphere.obj");
 		
 		// Se añaden los nodos a la escena:
 
@@ -46,7 +46,7 @@ namespace bullet
 	{
 		//std::cout << "Update" << std::endl;
 		dynamicWorld->stepSimulation(timeStep);
-		//gameObjects["ball"]->Add_physic_transform();
+		gameObjects["ball"]->Set_physic_transform();
 	}
 
 	void Scene::render()
