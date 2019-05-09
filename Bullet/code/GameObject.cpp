@@ -33,6 +33,32 @@ namespace bullet
 		body->setRestitution(bounce);
 
 		world.addRigidBody(body.get());
+
+		/*//scene->get("sphere");
+
+
+		// Apply the physics transform to the graphics model:
+
+		//body->getMotionState ()->getWorldTransform (physics_transform);
+
+		//physics_transform.getOpenGLMatrix(glm::value_ptr(graphics_transform));
+
+		//sphere_model->set_transformation (graphics_transform);
+
+		//sphere_model->scale (0.5f);*/
+	}
+
+	void GameObject::Add_physic_transform()
+	{
+		//std::cout << "Update" << std::endl;
+
+		body->getMotionState()->getWorldTransform(physics_transform);
+
+		physics_transform.getOpenGLMatrix(glm::value_ptr(graphics_transform));
+
+		sphere_model->set_transformation(graphics_transform);
+
+		sphere_model->scale(0.5f);
 	}
 
 	/*GameObject::GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr<btCollisionShape> given_shape, const btVector3 & initial_position, float bounce)

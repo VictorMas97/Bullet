@@ -17,7 +17,7 @@ namespace bullet
 		std::shared_ptr< glt::Light       > light(new glt::Light);
 
 		//gameObjects["ground"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(50.f, 1.f, 50.f)), btVector3(0.f , -4.f, 0.f), 0.7f);
-		gameObjects["ball"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btSphereShape>(1.f), btVector3(0.f, 10.f, 0.f), 1.f, 1.f, "../../assets/sphere.obj");
+		gameObjects["ball"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btSphereShape>(1.f), btVector3(0.f, 0.f, 0.f), 1.f, 1.f, "../../assets/sphere.obj");
 		
 		// Se añaden los nodos a la escena:
 
@@ -26,9 +26,10 @@ namespace bullet
 		renderNode->add("light", light);	
 
 		renderNode->get("light")->translate(glt::Vector3(10.f, 10.f, 10.f));
-		renderNode->get("camera")->translate(glt::Vector3(0.f, 0.f, 5.f));		
+		renderNode->get("camera")->translate(glt::Vector3(0.f, 0.f, 5.f));	
 
-		sphere_model = renderNode->get("ball");
+
+		gameObjects["ball"]->sphere_model = renderNode->get("ball");
 	}
 
 	void Scene::reset_viewport(const sf::Window & window)
@@ -43,12 +44,14 @@ namespace bullet
 
 	void Scene::update(btScalar timeStep)
 	{
+		//std::cout << "Update" << std::endl;
 		dynamicWorld->stepSimulation(timeStep);
+		//gameObjects["ball"]->Add_physic_transform();
 	}
 
 	void Scene::render()
-	{
-		renderNode->render();
+	{		
+		renderNode->render();		
 	}
 
 	void Scene::reset()

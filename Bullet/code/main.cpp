@@ -34,7 +34,9 @@ int main ()
 
 	scene.reset_viewport(window);
 
-	//std::shared_ptr< glt::Render_Node > scene = bullet::Scene::create_scene(*dynamicsWorld);
+	// Create the scene
+
+	/*//std::shared_ptr< glt::Render_Node > scene = bullet::Scene::create_scene(*dynamicsWorld);
 
 	//bullet::Scene::configure_scene (*scene);
 
@@ -42,7 +44,7 @@ int main ()
 
     // Se inicializan algunos elementos de OpenGL:
 
-	//bullet::Scene::reset_viewport (window, *scene);
+	//bullet::Scene::reset_viewport (window, *scene);*/
 
     glClearColor (0.2f, 0.2f, 0.2f, 1.f);
 
@@ -74,13 +76,13 @@ int main ()
             }
         }
 
-        // Perform the simulation:  // Scene??
+        // Perform the simulation
+
 		scene.update(1.f / 60.f);
-        //dynamicsWorld->stepSimulation (1.f / 60.f);    // Ángel
 
-        // Apply the physics transform to the graphics model:  // Model??
+        // Apply the physics transform to the graphics model
 
-        btTransform physics_transform;
+       /* btTransform physics_transform;
 
         //sphere_body->getMotionState ()->getWorldTransform (physics_transform);
 
@@ -90,9 +92,9 @@ int main ()
 
         //sphere_model->set_transformation (graphics_transform);
 
-        //sphere_model->scale (0.5f);
+        //sphere_model->scale (0.5f);*/
 
-        // Render the scene:
+        // Render the scene
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

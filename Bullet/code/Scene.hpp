@@ -3,7 +3,6 @@
 #include "World.hpp"
 #include "GameObject.hpp"
 #include <Light.hpp>
-//#include <Model_Obj.hpp>
 #include <Render_Node.hpp>
 #include <SFML/Window.hpp>
 
