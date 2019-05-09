@@ -1,13 +1,17 @@
 
 // Autor:
-
 #include "GameObject.hpp"
+#include <iostream>
 
 namespace bullet
 {
-	GameObject::GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr<btCollisionShape>& given_shape, const btVector3 & initial_position, float bounce, float mass)
-		                  : shape(given_shape)
+	GameObject::GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr<btCollisionShape> given_shape, const btVector3 & initial_position, 
+		                                                     float bounce, float mass, const std::string & obj_file_path) : shape(given_shape)
 	{
+		mesh = std::make_shared<glt::Model_Obj>(obj_file_path);
+
+		std::cout << "New game object" << std::endl;
+
 		// Se establece la posición inicial:
 
 		btTransform transform;
@@ -31,7 +35,7 @@ namespace bullet
 		world.addRigidBody(body.get());
 	}
 
-	GameObject::GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr<btCollisionShape>& given_shape, const btVector3 & initial_position, float bounce)
+	/*GameObject::GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr<btCollisionShape> given_shape, const btVector3 & initial_position, float bounce)
 						  : shape(given_shape)
 	{
 		// Se establece la posición inicial:
@@ -49,5 +53,5 @@ namespace bullet
 		body->setRestitution(bounce);
 
 		world.addRigidBody(body.get());
-	}
+	}*/
 }

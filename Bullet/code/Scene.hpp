@@ -3,7 +3,7 @@
 #include "World.hpp"
 #include "GameObject.hpp"
 #include <Light.hpp>
-#include <Model_Obj.hpp>
+//#include <Model_Obj.hpp>
 #include <Render_Node.hpp>
 #include <SFML/Window.hpp>
 
@@ -13,7 +13,7 @@ namespace bullet
 	{
 	public:
 
-		Scene(btVector3 gravity);
+		Scene(btVector3 gravity = btVector3(0, -10, 0));
 
 		void reset_viewport(const sf::Window & window);
 
@@ -29,5 +29,7 @@ namespace bullet
 		std::shared_ptr< glt::Render_Node > renderNode;
 
 		std::map<std::string, std::shared_ptr<GameObject>> gameObjects;
+
+		glt::Node * sphere_model;
 	};
 }

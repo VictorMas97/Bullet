@@ -4,26 +4,11 @@
 namespace bullet
 {
 	World::World(btVector3 gravity)
+	:
+		collisionDispatcher(&collisionConfiguration)
 	{
 
 		std::cout << "Dinamyc world" << std::endl;
-
-		// Collision configuration contains default setup for memory, collision setup.
-		// Advanced users can create their own configuration.
-
-		btDefaultCollisionConfiguration collisionConfiguration;
-
-		// Use the default collision dispatcher. For parallel processing you can use a diffent dispatcher (see Extras/BulletMultiThreaded).
-
-		btCollisionDispatcher collisionDispatcher(&collisionConfiguration);
-
-		// btDbvtBroadphase is a good general purpose broadphase. You can also try out btAxis3Sweep.
-
-		btDbvtBroadphase overlappingPairCache;
-
-		// The default constraint solver. For parallel processing you can use a different solver (see Extras/BulletMultiThreaded).
-
-		btSequentialImpulseConstraintSolver constraintSolver;
 
 		// Create and configure the physiscs world:
 
@@ -34,7 +19,7 @@ namespace bullet
 
 	void World::stepSimulation(btScalar timeStep)
 	{
-		//world->stepSimulation(timeStep);  // No work
+		world->stepSimulation(timeStep);  // No work
 	}
 
 	void World::reset()
