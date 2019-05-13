@@ -45,8 +45,8 @@ namespace bullet
 
 		physics_transform.getOpenGLMatrix(glm::value_ptr(graphics_transform));
 
-		sphere_model->set_transformation(graphics_transform);
+		mesh->set_transformation(graphics_transform);
 
-		sphere_model->scale(0.5f);
+		mesh->scale(0.5f);
 	}
 }

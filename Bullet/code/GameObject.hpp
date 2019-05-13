@@ -24,7 +24,7 @@ namespace bullet
 
 	public:
 
-		glt::Node * sphere_model;
+		glt::Node * mesh;
 			   
 		std::shared_ptr < glt::Model > model;
 

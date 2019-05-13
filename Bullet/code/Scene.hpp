@@ -2,6 +2,7 @@
 
 #include "World.hpp"
 #include "GameObject.hpp"
+#include <Cube.hpp>
 #include <Light.hpp>
 #include <Render_Node.hpp>
 #include <SFML/Window.hpp>
