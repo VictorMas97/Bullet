@@ -8,7 +8,6 @@ namespace bullet
 
 	class World
 	{
-
 		// Collision configuration contains default setup for memory, collision setup.
 		// Advanced users can create their own configuration.
 

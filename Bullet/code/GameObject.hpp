@@ -12,8 +12,6 @@ namespace bullet
 
 	class GameObject
 	{
-
-
 		std::shared_ptr < btCollisionShape > shape;
 
 		btDefaultMotionState state;
@@ -28,7 +26,7 @@ namespace bullet
 
 		glt::Node * sphere_model;
 			   
-		std::shared_ptr < glt::Model > mesh;
+		std::shared_ptr < glt::Model > model;
 
 		GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr< btCollisionShape > given_shape, const btVector3 & initial_position, 
 																	 float bounce, float mass = 0.f, const std::string & obj_file_path = "");

@@ -3,11 +3,8 @@
 
 namespace bullet
 {
-	World::World(btVector3 gravity)
-	:
-		collisionDispatcher(&collisionConfiguration)
+	World::World(btVector3 gravity) : collisionDispatcher(&collisionConfiguration)
 	{
-
 		std::cout << "Dinamyc world" << std::endl;
 
 		// Create and configure the physiscs world:
@@ -19,7 +16,7 @@ namespace bullet
 
 	void World::stepSimulation(btScalar timeStep)
 	{
-		world->stepSimulation(timeStep);  // No work
+		world->stepSimulation(timeStep);
 	}
 
 	void World::reset()

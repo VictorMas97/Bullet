@@ -10,6 +10,14 @@ namespace bullet
 {
 	class Scene 
 	{
+		std::shared_ptr< World > dynamicWorld;
+
+		std::shared_ptr< glt::Render_Node > renderNode;
+
+		std::map<std::string, std::shared_ptr<GameObject>> gameObjects;
+
+		std::map<std::string, std::shared_ptr<GameObject>>::iterator it;
+
 	public:
 
 		Scene(btVector3 gravity = btVector3(0, -10, 0));
@@ -21,14 +29,5 @@ namespace bullet
 		void render();
 
 		void reset();
-
-
-		std::shared_ptr< World > dynamicWorld;
-
-		std::shared_ptr< glt::Render_Node > renderNode;
-
-		std::map<std::string, std::shared_ptr<GameObject>> gameObjects;
-
-		//glt::Node * sphere_model;
 	};
 }

@@ -28,23 +28,11 @@ int main ()
 
     window.setVerticalSyncEnabled (true);
 
-    // Se crea y se configura la escena:
+    // Create the scene and reset the viewport
 
 	bullet::Scene scene{ btVector3(0, -10, 0) };
 
 	scene.reset_viewport(window);
-
-	// Create the scene
-
-	/*//std::shared_ptr< glt::Render_Node > scene = bullet::Scene::create_scene(*dynamicsWorld);
-
-	//bullet::Scene::configure_scene (*scene);
-
-    //glt::Node * sphere_model = scene->get ("sphere");  // Get the model 3D in the Scene class over the Model class??
-
-    // Se inicializan algunos elementos de OpenGL:
-
-	//bullet::Scene::reset_viewport (window, *scene);*/
 
     glClearColor (0.2f, 0.2f, 0.2f, 1.f);
 
@@ -69,7 +57,6 @@ int main ()
 
                 case sf::Event::Resized:
                 {
-					//bullet::Scene::reset_viewport (window, *scene);
 					scene.reset_viewport(window);
                     break;
                 }
@@ -79,20 +66,6 @@ int main ()
         // Perform the simulation
 
 		scene.update(1.f / 60.f);
-
-        // Apply the physics transform to the graphics model
-
-       /* btTransform physics_transform;
-
-        //sphere_body->getMotionState ()->getWorldTransform (physics_transform);
-
-        glm::mat4 graphics_transform;
-
-        physics_transform.getOpenGLMatrix (glm::value_ptr(graphics_transform));
-
-        //sphere_model->set_transformation (graphics_transform);
-
-        //sphere_model->scale (0.5f);*/
 
         // Render the scene
 

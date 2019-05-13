@@ -8,9 +8,13 @@ namespace bullet
 	GameObject::GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr<btCollisionShape> given_shape, const btVector3 & initial_position, 
 		                                                     float bounce, float mass, const std::string & obj_file_path) : shape(given_shape)
 	{
-		mesh = std::make_shared<glt::Model_Obj>(obj_file_path);
-
+		
 		std::cout << "New game object" << std::endl;
+
+		model = std::make_shared<glt::Model_Obj>(obj_file_path);
+
+		//std::dynamic_pointer_cast <glt::Model_Obj> (model)->get_error();
+		//std::cout << std::dynamic_pointer_cast <glt::Model_Obj> (model)->get_error() << std::endl;
 
 		// Se establece la posición inicial:
 
