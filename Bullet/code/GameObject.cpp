@@ -1,6 +1,7 @@
 
 // Autor:
 #include "GameObject.hpp"
+#include <Cube.hpp>
 #include <iostream>
 
 namespace bullet
@@ -8,10 +9,19 @@ namespace bullet
 	GameObject::GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr<btCollisionShape> given_shape, const btVector3 & initial_position, 
 		                                                     float bounce, float mass, const std::string & obj_file_path) : shape(given_shape)
 	{
-		
-		std::cout << "New game object" << std::endl;
 
-		model = std::make_shared<glt::Model_Obj>(obj_file_path);
+		if (obj_file_path == "")
+		{
+			std::cout << "New game object without path" << std::endl;
+			model = std::make_shared<glt::Model>();
+			model->add(std::shared_ptr< glt::Drawable >(new glt::Cube), glt::Material::default_material());
+		}
+
+		else
+		{
+			std::cout << "New game object with path" << std::endl;
+			model = std::make_shared<glt::Model_Obj>(obj_file_path);
+		}		
 
 		//std::dynamic_pointer_cast <glt::Model_Obj> (model)->get_error();
 		//std::cout << std::dynamic_pointer_cast <glt::Model_Obj> (model)->get_error() << std::endl;
@@ -45,8 +55,10 @@ namespace bullet
 
 		physics_transform.getOpenGLMatrix(glm::value_ptr(graphics_transform));
 
-		mesh->set_transformation(graphics_transform);
+		model->set_transformation(graphics_transform);
 
-		mesh->scale(0.5f);
+		model->scale(0.5f);
+
+		//model->scale()
 	}
 }

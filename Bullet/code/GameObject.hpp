@@ -23,8 +23,6 @@ namespace bullet
 		glm::mat4 graphics_transform;
 
 	public:
-
-		glt::Node * mesh;
 			   
 		std::shared_ptr < glt::Model > model;
 

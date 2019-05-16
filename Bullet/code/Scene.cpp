@@ -13,30 +13,30 @@ namespace bullet
 
 		renderNode = std::make_shared<glt::Render_Node>();
 
-		std::shared_ptr< glt::Model       > catapult(new glt::Model);
+		//std::shared_ptr< glt::Model       > catapult(new glt::Model);
 
-		std::shared_ptr< glt::Model       > startFloor(new glt::Model);
-		std::shared_ptr< glt::Model       > middleFloor(new glt::Model);
-		std::shared_ptr< glt::Model       > lastFloor(new glt::Model);
+		//std::shared_ptr< glt::Model       > startFloor(new glt::Model);
+		//std::shared_ptr< glt::Model       > middleFloor(new glt::Model);
+		//std::shared_ptr< glt::Model       > lastFloor(new glt::Model);
 
-		std::shared_ptr< glt::Model       > platform(new glt::Model);
-		std::shared_ptr< glt::Model       > door(new glt::Model);
-		std::shared_ptr< glt::Model       > column(new glt::Model);
+		//std::shared_ptr< glt::Model       > platform(new glt::Model);
+		//std::shared_ptr< glt::Model       > door(new glt::Model);
+		//std::shared_ptr< glt::Model       > column(new glt::Model);
 
 		std::shared_ptr< glt::Camera      > camera(new glt::Camera(20.f, 1.f, 50.f, 1.f));
 		std::shared_ptr< glt::Light       > light(new glt::Light);
 
 		// Es necesario añadir las mallas a los modelos antes de añadir los modelos a la escena:
 
-		catapult->add(std::shared_ptr< glt::Drawable >(new glt::Cube), glt::Material::default_material());
+		//catapult->add(std::shared_ptr< glt::Drawable >(new glt::Cube), glt::Material::default_material());
 
-		startFloor->add(std::shared_ptr< glt::Drawable >(new glt::Cube), glt::Material::default_material());
-		middleFloor->add(std::shared_ptr< glt::Drawable >(new glt::Cube), glt::Material::default_material());
-		lastFloor->add(std::shared_ptr< glt::Drawable >(new glt::Cube), glt::Material::default_material());		
+		//startFloor->add(std::shared_ptr< glt::Drawable >(new glt::Cube), glt::Material::default_material());
+		//middleFloor->add(std::shared_ptr< glt::Drawable >(new glt::Cube), glt::Material::default_material());
+		//lastFloor->add(std::shared_ptr< glt::Drawable >(new glt::Cube), glt::Material::default_material());		
 
-		platform->add(std::shared_ptr< glt::Drawable >(new glt::Cube), glt::Material::default_material());
-		door->add(std::shared_ptr< glt::Drawable >(new glt::Cube), glt::Material::default_material());
-		column->add(std::shared_ptr< glt::Drawable >(new glt::Cube), glt::Material::default_material());
+		//platform->add(std::shared_ptr< glt::Drawable >(new glt::Cube), glt::Material::default_material());
+		//door->add(std::shared_ptr< glt::Drawable >(new glt::Cube), glt::Material::default_material());
+		//column->add(std::shared_ptr< glt::Drawable >(new glt::Cube), glt::Material::default_material());
 		
 		// Se añaden los nodos a la escena:
 
@@ -46,46 +46,46 @@ namespace bullet
 		renderNode->get("camera")->rotate_around_x(-0.7f);
 		renderNode->get("camera")->translate(glt::Vector3(0.f, 0.f, 5.f));	
 
-		renderNode->add("catapult", catapult);
-		renderNode->get("catapult")->scale(0.1f, 0.2f, 0.1f);
-		renderNode->get("catapult")->translate(glt::Vector3(20.f, 10.f, 0.f));
+		//renderNode->add("catapult", catapult);
+		//renderNode->get("catapult")->scale(0.1f, 0.2f, 0.1f);
+		//renderNode->get("catapult")->translate(glt::Vector3(20.f, 10.f, 0.f));
 
-		renderNode->add("startFloor", startFloor);
-		renderNode->get("startFloor")->scale(0.5f, 1.5f, 1.5f);
-		renderNode->get("startFloor")->translate(glt::Vector3(5.f, 0.f, 0.f));
+		//renderNode->add("startFloor", startFloor);
+		//renderNode->get("startFloor")->scale(0.5f, 1.5f, 1.5f);
+		//renderNode->get("startFloor")->translate(glt::Vector3(5.f, 0.f, 0.f));
 
-		renderNode->add("middleFloor", middleFloor);
-		renderNode->get("middleFloor")->scale(0.5f, 1.5f, 1.5f);
-		renderNode->get("middleFloor")->translate(glt::Vector3(0.f, 0.f, 0.f));
+		//renderNode->add("middleFloor", middleFloor);
+		//renderNode->get("middleFloor")->scale(0.5f, 1.5f, 1.5f);
+		//renderNode->get("middleFloor")->translate(glt::Vector3(0.f, 0.f, 0.f));
 
-		renderNode->add("lastFloor", lastFloor);
-		renderNode->get("lastFloor")->scale(0.5f, 1.5f, 1.5f);
-		renderNode->get("lastFloor")->translate(glt::Vector3(-5.f, 0.f, 0.f));
+		//renderNode->add("lastFloor", lastFloor);
+		//renderNode->get("lastFloor")->scale(0.5f, 1.5f, 1.5f);
+		//renderNode->get("lastFloor")->translate(glt::Vector3(-5.f, 0.f, 0.f));
 
-		renderNode->add("platform", platform);
-		renderNode->get("platform")->scale(0.3f, 0.1f, 0.5f);
-		renderNode->get("platform")->translate(glt::Vector3(5.7f, 14.f, 0.f));
+		//renderNode->add("platform", platform);
+		//renderNode->get("platform")->scale(0.3f, 0.1f, 0.5f);
+		//renderNode->get("platform")->translate(glt::Vector3(5.7f, 14.f, 0.f));
 
-		renderNode->add("door", door);
-		renderNode->get("door")->scale(0.1f, 0.3f, 1.5f);
-		renderNode->get("door")->translate(glt::Vector3(0.f, 6.f, 0.f));
+		//renderNode->add("door", door);
+		//renderNode->get("door")->scale(0.1f, 0.3f, 1.5f);
+		//renderNode->get("door")->translate(glt::Vector3(0.f, 6.f, 0.f));
 
-		renderNode->add("column", column);
-		renderNode->get("column")->scale(0.1f, 0.3f, 0.5f);
-		renderNode->get("column")->translate(glt::Vector3(-25.f, 6.f, 0.f));
+		//renderNode->add("column", column);
+		//renderNode->get("column")->scale(0.1f, 0.3f, 0.5f);
+		//renderNode->get("column")->translate(glt::Vector3(-25.f, 6.f, 0.f));
 
 		renderNode->get("light")->translate(glt::Vector3(10.f, 10.f, 10.f));
 		
 
-
-		//gameObjects["ground"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(50.f, 1.f, 50.f)), btVector3(0.f , -4.f, 0.f), 0.7f, 0.f, "../../assets/Lowpoly_tree_sample.obj");
-		//gameObjects["ball"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btSphereShape>(1.f), btVector3(0.f, 10.f, 0.f), 1.f, 1.f, "../../assets/sphere.obj");
-		//gameObjects["ball2"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btSphereShape>(1.f), btVector3(0.f, 10.f, 0.f), 1.f, 1.f, "../../assets/sphere.obj");
+		gameObjects["catapult"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(50.f, 1.f, 50.f)), btVector3(0.f, 0.f, 0.f), 0.f, 1.f);
+		gameObjects["ground"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(50.f, 1.f, 50.f)), btVector3(0.f , -4.f, 0.f), 0.7f);
+		gameObjects["ball"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btSphereShape>(1.f), btVector3(0.f, 10.f, 0.f), 1.f, 1.f, "../../assets/sphere.obj");
+		gameObjects["ball2"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btSphereShape>(1.f), btVector3(0.f, 10.f, 0.f), 1.f, 1.f, "../../assets/sphere.obj");
 
 		for (it = gameObjects.begin(); it != gameObjects.end(); ++it)
 		{			
 			renderNode->add(it->first, it->second->model);
-			it->second->mesh = renderNode->get(it->first);
+			//it->second->mesh = renderNode->get(it->first);
 		}
 	}
 
