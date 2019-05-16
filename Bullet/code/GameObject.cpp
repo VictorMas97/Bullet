@@ -6,8 +6,8 @@
 
 namespace bullet
 {
-	GameObject::GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr<btCollisionShape> given_shape, const btVector3 & initial_position, 
-		                                                     float bounce, float mass, const std::string & obj_file_path) : shape(given_shape)
+	GameObject::GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr<btCollisionShape> given_shape, const btVector3 & initial_position,
+						     const glt::Vector3 & object_scale, float mass, float bounce, const std::string & obj_file_path) : shape(given_shape)
 	{
 
 		if (obj_file_path == "")
@@ -21,10 +21,9 @@ namespace bullet
 		{
 			std::cout << "New game object with path" << std::endl;
 			model = std::make_shared<glt::Model_Obj>(obj_file_path);
-		}		
+		}
 
-		//std::dynamic_pointer_cast <glt::Model_Obj> (model)->get_error();
-		//std::cout << std::dynamic_pointer_cast <glt::Model_Obj> (model)->get_error() << std::endl;
+		objectScale = object_scale;
 
 		// Se establece la posición inicial:
 
@@ -57,8 +56,6 @@ namespace bullet
 
 		model->set_transformation(graphics_transform);
 
-		model->scale(0.5f);
-
-		//model->scale()
+		model->scale(objectScale.x, objectScale.y, objectScale.z);
 	}
 }
