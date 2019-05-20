@@ -2,6 +2,7 @@
 
 #include "World.hpp"
 #include "GameObject.hpp"
+#include "Collision.hpp"
 #include <Cube.hpp>
 #include <Light.hpp>
 #include <Render_Node.hpp>
@@ -18,6 +19,8 @@ namespace bullet
 		std::map<std::string, std::shared_ptr<GameObject>> gameObjects;
 
 		std::map<std::string, std::shared_ptr<GameObject>>::iterator it;
+
+		Collision collisions;
 
 	public:
 

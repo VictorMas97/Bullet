@@ -157,6 +157,7 @@
     <ClCompile Include="..\..\code\World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\code\Collision.hpp" />
     <ClInclude Include="..\..\code\GameObject.hpp" />
     <ClInclude Include="..\..\code\Scene.hpp" />
     <ClInclude Include="..\..\code\World.hpp" />

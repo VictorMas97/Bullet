@@ -6,8 +6,8 @@
 
 namespace bullet
 {
-	GameObject::GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr<btCollisionShape> given_shape, const btVector3 & initial_position,
-						     const glt::Vector3 & object_scale, float mass, float bounce, const std::string & obj_file_path) : shape(given_shape)
+	GameObject::GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr<btCollisionShape> given_shape, const btVector3 & initial_position, int index_tag,
+						                 const glt::Vector3 & object_scale, float mass, float bounce, const std::string & obj_file_path) : shape(given_shape)
 	{
 
 		if (obj_file_path == "")
@@ -25,15 +25,11 @@ namespace bullet
 
 		objectScale = object_scale;
 
-		// Se establece la posición inicial:
-
 		btTransform transform;
 		transform.setIdentity();
 		transform.setOrigin(initial_position);
 
 		state.setWorldTransform(transform);
-
-		// Se calcula el "local inertia" en función de la geometría y la masa:
 
 		btVector3 localInertia(0, 0, 0);
 
@@ -44,6 +40,10 @@ namespace bullet
 		body.reset(new btRigidBody(info));
 
 		body->setRestitution(bounce);
+
+		body->setIslandTag(index_tag);
+
+		std::cout << body->getIslandTag() << std::endl;
 
 		world.addRigidBody(body.get());
 	}
@@ -57,5 +57,22 @@ namespace bullet
 		model->set_transformation(graphics_transform);
 
 		model->scale(objectScale.x, objectScale.y, objectScale.z);
+	}
+
+	void GameObject::Clamp(btVector3 & linearFactor, btVector3 & angularFactor)
+	{
+		body->setLinearFactor(linearFactor);
+		body->setAngularFactor(angularFactor);
+	}
+
+	void GameObject::Set_velocity(btVector3 & velocity)
+	{
+		body->setLinearVelocity(velocity);
+		body->applyImpulse(body->getLinearVelocity(), btVector3(0.0f, 0.0f, 0.0f));
+	}
+
+	void GameObject::Activate_state()
+	{
+		body->setActivationState(DISABLE_DEACTIVATION);		
 	}
 }
