@@ -15,8 +15,6 @@ namespace bullet
 
 		btDefaultMotionState state;
 
-		std::shared_ptr < btRigidBody> body;
-
 		btTransform physics_transform;
 
 		glm::mat4 graphics_transform;
@@ -24,6 +22,8 @@ namespace bullet
 		glt::Vector3 objectScale = glt::Vector3(0.f, 0.f, 0.f);
 
 	public:
+
+		std::shared_ptr < btRigidBody> body;
 			   
 		std::shared_ptr < glt::Model > model;
 

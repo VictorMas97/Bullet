@@ -20,7 +20,7 @@ namespace bullet
 
 		std::map<std::string, std::shared_ptr<GameObject>>::iterator it;
 
-		Collision collisions;
+		//Collision collisions;
 
 	public:
 

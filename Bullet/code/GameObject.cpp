@@ -41,9 +41,11 @@ namespace bullet
 
 		body->setRestitution(bounce);
 
-		body->setIslandTag(index_tag);
+		body->setUserIndex(index_tag);
 
-		std::cout << body->getIslandTag() << std::endl;
+		body->setUserPointer(this);
+
+		std::cout << body->getUserIndex() << std::endl;
 
 		world.addRigidBody(body.get());
 	}
