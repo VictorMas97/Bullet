@@ -33,22 +33,26 @@ namespace bullet
 		gameObjects["columnFloor"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.5f, 1.5f, 1.5f)), btVector3(-2.5f, 0.f, 0.f), 3);
 
 		gameObjects["catapult"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.1f, 0.2f, 0.1f)), btVector3(2.8f, 1.7f, 0.f), 4, glt::Vector3(0.1f, 0.2f, 0.1f), 1.f);
+		//gameObjects["catapult"]->Clamp(btVector3(0.1f, 0.0f, 0.0f), btVector3(0.0f, 0.0f, 0.0f));
 		gameObjects["catapult"]->Activate_state();
 
 		gameObjects["platform"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.3f, 0.1f, 0.5f)), btVector3(1.7f, 1.4f, 0.f), 5, glt::Vector3(0.3f, 0.1f, 0.5f));
-		gameObjects["platform"]->Clamp(btVector3(1.0f, 0.0f, 0.0f), btVector3(0.0f, 0.0f, 0.0f));
+		//gameObjects["platform"]->Clamp(btVector3(0.1f, 0.0f, 0.0f), btVector3(0.0f, 0.0f, 0.0f));
+		gameObjects["platform"]->body->setCollisionFlags(gameObjects["platform"]->body->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
+		gameObjects["platform"]->Activate_state();
+		//gameObjects["platform"]->body->setActivationState(DISABLE_DEACTIVATION);
+		//gameObjects["platform"]->body->getWorldTransform().getOrigin() += btVector3(-0.2f, 0.0f, 0.0f);
+		gameObjects["platform"]->Set_velocity(btVector3(-0.23f, 0.0f, 0.0f));
 
-		//gameObjects["platformExtra"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.1f, 0.1f, 0.1f)), btVector3(1.5f, 1.6f, -0.2f), 9, glt::Vector3(0.1f, 0.1f, 0.1f), 1.0f);
-		//gameObjects["platform"]->Activate_state();
-		//gameObjects["platform"]->Set_velocity(btVector3(-0.23f, 0.0f, 0.0f));
+		gameObjects["platformExtra"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.1f, 0.1f, 0.1f)), btVector3(1.5f, 1.6f, -0.2f), 6, glt::Vector3(0.1f, 0.1f, 0.1f));
 
-		gameObjects["key"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.1f, 0.1f, 0.1f)), btVector3(0.3f, 1.6f, 1.3f), 6, glt::Vector3(0.1f, 0.1f, 0.1f));
+		gameObjects["key"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.1f, 0.1f, 0.1f)), btVector3(0.3f, 1.6f, 1.3f), 7, glt::Vector3(0.1f, 0.1f, 0.1f));
 		
-		gameObjects["door"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.1f, 0.3f, 1.5f)), btVector3(-0.3f, 1.8f, 0.f), 7, glt::Vector3(0.1f, 0.3f, 1.5f));
+		gameObjects["door"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.1f, 0.3f, 1.5f)), btVector3(-0.3f, 1.8f, 0.f), 8, glt::Vector3(0.1f, 0.3f, 1.5f));
 		gameObjects["door"]->Activate_state();
 		//gameObjects["door"]->Set_velocity(btVector3(0.0f, 1.0f, 0.0f));
 
-		gameObjects["column"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.2f, 0.3f, 0.2f)), btVector3(-2.5f, 1.8f, 0.f), 8, glt::Vector3(0.2f, 0.3f, 0.2f), 1.f);
+		gameObjects["column"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.2f, 0.3f, 0.2f)), btVector3(-2.5f, 1.8f, 0.f), 9, glt::Vector3(0.2f, 0.3f, 0.2f), 1.f);
 	
 		//gameObjects["ground"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(50.f, 1.f, 50.f)), btVector3(0.f , -4.f, 0.f), 0.7f);
 		//gameObjects["ball"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btSphereShape>(0.3f), btVector3(0.f, 10.f, 0.f), 1.f, 1.f, "../../assets/sphere.obj");
@@ -76,9 +80,11 @@ namespace bullet
 	{
 		dynamicWorld->stepSimulation(timeStep);
 
+		//gameObjects["platform"]->Set_kinematic_velocity(btVector3(-0.01f, 0.0f, 0.0f));
+
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
-			gameObjects["catapult"]->Set_velocity(btVector3(-0.2f, 0.0f, 0.0f));			
+			gameObjects["catapult"]->Set_velocity(btVector3(-0.2f, 0.0f, 0.0f));
 		}
 
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
@@ -90,8 +96,6 @@ namespace bullet
 		{
 			it->second->Set_physic_transform();
 		}
-
-		//collisions.Check_collisions(*dynamicWorld->world);
 	}
 
 	void Scene::render()

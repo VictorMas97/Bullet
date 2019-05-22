@@ -24,10 +24,11 @@ namespace bullet
 		}
 
 		objectScale = object_scale;
-
-		btTransform transform;
+		//btTransform transform;// = body->getWorldTransform();
 		transform.setIdentity();
 		transform.setOrigin(initial_position);
+
+		
 
 		state.setWorldTransform(transform);
 
@@ -71,6 +72,13 @@ namespace bullet
 	{
 		body->setLinearVelocity(velocity);
 		body->applyImpulse(body->getLinearVelocity(), btVector3(0.0f, 0.0f, 0.0f));
+	}
+
+	void GameObject::Set_kinematic_velocity(btVector3 & velocity)
+	{
+		body->getMotionState()->getWorldTransform(transform);
+		transform.getOrigin() += velocity;
+		body->getMotionState()->setWorldTransform(transform);
 	}
 
 	void GameObject::Activate_state()

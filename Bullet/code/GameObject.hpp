@@ -23,6 +23,8 @@ namespace bullet
 
 	public:
 
+		btTransform transform;
+
 		std::shared_ptr < btRigidBody> body;
 			   
 		std::shared_ptr < glt::Model > model;
@@ -35,6 +37,8 @@ namespace bullet
 		void Clamp(btVector3 & linearFactor, btVector3 & angularFactor);
 
 		void Set_velocity(btVector3 & velocity);
+
+		void Set_kinematic_velocity(btVector3 & velocity);
 
 		void Activate_state();
 	};

@@ -39,10 +39,18 @@ namespace bullet
 
 				if (point.getDistance() < 0.f)
 				{
-					if ((game_object_a->body->getUserIndex() == 4 && game_object_b->body->getUserIndex() == 9) || (game_object_a->body->getUserIndex() == 9 && game_object_b->body->getUserIndex() == 4))
+					if ((game_object_a->body->getUserIndex() == 4 && game_object_b->body->getUserIndex() == 5) || (game_object_a->body->getUserIndex() == 5 && game_object_b->body->getUserIndex() == 4))
 					{
 						std::cout << "colision" << std::endl;
-						//game_object_b->Set_velocity(btVector3(-0.23f, 0.0f, 0.0f));
+						if (game_object_a->body->getUserIndex() == 5)
+						{
+							game_object_a->Set_kinematic_velocity(btVector3(-0.01f, 0.0f, 0.0f));
+						}
+
+						else if (game_object_b->body->getUserIndex() == 5)
+						{
+							game_object_b->Set_kinematic_velocity(btVector3(-0.01f, 0.0f, 0.0f));
+						}						
 					}
 				}
 			}
