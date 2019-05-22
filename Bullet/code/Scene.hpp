@@ -19,7 +19,7 @@ namespace bullet
 
 		std::map<std::string, std::shared_ptr<GameObject>>::iterator it;
 
-	public:
+	public:		
 
 		Scene(btVector3 gravity = btVector3(0, -10, 0));
 

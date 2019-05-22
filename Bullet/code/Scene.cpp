@@ -29,7 +29,12 @@ namespace bullet
 		#pragma region GameObjects
 
 		gameObjects["startFloor"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.5f, 1.5f, 1.5f)), btVector3(2.5f, 0.f, 0.f), 1);
-		gameObjects["doorFloor"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.5f, 1.5f, 1.5f)), btVector3(0.f, 0.f, 0.f), 2);
+		gameObjects["doorFloor"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.5f, 1.5f, 1.5f)), btVector3(0.f, 0.f, 0.f), 2, glt::Vector3(0.5f, 1.5f, 1.5f), 1.f);
+		//gameObjects["doorFloor"]->body->setCollisionFlags(gameObjects["doorFloor"]->body->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
+		//gameObjects["doorFloor"]->Activate_state();
+		gameObjects["doorFloor"]->Clamp(btVector3(0.0f, 0.0f, 0.0f), btVector3(0.0f, 0.0f, 0.0f));
+		gameObjects["doorFloor"]->body->setGravity(btVector3(0.0f, 0.0f, 0.0f));
+
 		gameObjects["columnFloor"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.5f, 1.5f, 1.5f)), btVector3(-2.5f, 0.f, 0.f), 3);
 
 		gameObjects["catapult"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.1f, 0.2f, 0.1f)), btVector3(2.8f, 1.7f, 0.f), 4, glt::Vector3(0.1f, 0.2f, 0.1f), 1.f);
@@ -40,15 +45,15 @@ namespace bullet
 		//gameObjects["platform"]->Clamp(btVector3(0.1f, 0.0f, 0.0f), btVector3(0.0f, 0.0f, 0.0f));
 		gameObjects["platform"]->body->setCollisionFlags(gameObjects["platform"]->body->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
 		gameObjects["platform"]->Activate_state();
-		//gameObjects["platform"]->body->setActivationState(DISABLE_DEACTIVATION);
-		//gameObjects["platform"]->body->getWorldTransform().getOrigin() += btVector3(-0.2f, 0.0f, 0.0f);
-		gameObjects["platform"]->Set_velocity(btVector3(-0.23f, 0.0f, 0.0f));
 
 		gameObjects["platformExtra"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.1f, 0.1f, 0.1f)), btVector3(1.5f, 1.6f, -0.2f), 6, glt::Vector3(0.1f, 0.1f, 0.1f));
-
-		gameObjects["key"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.1f, 0.1f, 0.1f)), btVector3(0.3f, 1.6f, 1.3f), 7, glt::Vector3(0.1f, 0.1f, 0.1f));
+		gameObjects["platformExtra"]->body->setCollisionFlags(gameObjects["platformExtra"]->body->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
+		gameObjects["platformExtra"]->Activate_state();
+		//gameObjects["platformExtra"]->model->set_parent(gameObjects["platform"]->model.get());
+		gameObjects["key"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.1f, 0.1f, 0.1f)), btVector3(0.3f, 1.6f, -0.1f), 7, glt::Vector3(0.1f, 0.1f, 0.1f));
 		
 		gameObjects["door"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.1f, 0.3f, 1.5f)), btVector3(-0.3f, 1.8f, 0.f), 8, glt::Vector3(0.1f, 0.3f, 1.5f));
+		gameObjects["door"]->body->setCollisionFlags(gameObjects["door"]->body->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT); 
 		gameObjects["door"]->Activate_state();
 		//gameObjects["door"]->Set_velocity(btVector3(0.0f, 1.0f, 0.0f));
 
@@ -80,7 +85,17 @@ namespace bullet
 	{
 		dynamicWorld->stepSimulation(timeStep);
 
-		//gameObjects["platform"]->Set_kinematic_velocity(btVector3(-0.01f, 0.0f, 0.0f));
+		if (gameObjects["catapult"]->active && gameObjects["platformExtra"]->active  && !gameObjects["platform"]->active && !gameObjects["doorFloor"]->active)
+		{
+			gameObjects["platform"]->Set_kinematic_velocity(btVector3(-0.01f, 0.0f, 0.0f));
+			gameObjects["platformExtra"]->Set_kinematic_velocity(btVector3(-0.01f, 0.0f, 0.0f));
+		}
+
+		if (gameObjects["catapult"]->active && gameObjects["key"]->active)
+		{
+			std::cout << "hhh" << std::endl;
+			gameObjects["door"]->Set_kinematic_velocity(btVector3(0.0f, 0.1f, 0.0f));
+		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{

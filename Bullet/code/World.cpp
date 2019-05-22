@@ -39,18 +39,22 @@ namespace bullet
 
 				if (point.getDistance() < 0.f)
 				{
-					if ((game_object_a->body->getUserIndex() == 4 && game_object_b->body->getUserIndex() == 5) || (game_object_a->body->getUserIndex() == 5 && game_object_b->body->getUserIndex() == 4))
+					if ((game_object_a->body->getUserIndex() == 4 && game_object_b->body->getUserIndex() == 6) || (game_object_a->body->getUserIndex() == 6 && game_object_b->body->getUserIndex() == 4))
 					{
-						std::cout << "colision" << std::endl;
-						if (game_object_a->body->getUserIndex() == 5)
-						{
-							game_object_a->Set_kinematic_velocity(btVector3(-0.01f, 0.0f, 0.0f));
-						}
+						game_object_a->active = true;
+						game_object_b->active = true;			
+					}
 
-						else if (game_object_b->body->getUserIndex() == 5)
-						{
-							game_object_b->Set_kinematic_velocity(btVector3(-0.01f, 0.0f, 0.0f));
-						}						
+				    else if ((game_object_a->body->getUserIndex() == 2 && game_object_b->body->getUserIndex() == 5) || (game_object_a->body->getUserIndex() == 5 && game_object_b->body->getUserIndex() == 2))
+					{
+						game_object_a->active = true;
+						game_object_b->active = true;
+					}
+
+					else if ((game_object_a->body->getUserIndex() == 4 && game_object_b->body->getUserIndex() == 7) || (game_object_a->body->getUserIndex() == 7 && game_object_b->body->getUserIndex() == 4))
+					{
+						game_object_a->active = true;
+						game_object_b->active = true;
 					}
 				}
 			}

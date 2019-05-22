@@ -23,6 +23,8 @@ namespace bullet
 
 	public:
 
+		bool active = false;
+
 		btTransform transform;
 
 		std::shared_ptr < btRigidBody> body;

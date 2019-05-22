@@ -24,7 +24,6 @@ namespace bullet
 		}
 
 		objectScale = object_scale;
-		//btTransform transform;// = body->getWorldTransform();
 		transform.setIdentity();
 		transform.setOrigin(initial_position);
 
