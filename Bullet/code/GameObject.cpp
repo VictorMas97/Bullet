@@ -25,9 +25,7 @@ namespace bullet
 
 		objectScale = object_scale;
 		transform.setIdentity();
-		transform.setOrigin(initial_position);
-
-		
+		transform.setOrigin(initial_position);		
 
 		state.setWorldTransform(transform);
 
@@ -61,13 +59,14 @@ namespace bullet
 		model->scale(objectScale.x, objectScale.y, objectScale.z);
 	}
 
-	void GameObject::Clamp(btVector3 & linearFactor, btVector3 & angularFactor)
+	void GameObject::Clamp(btVector3 & linearFactor, btVector3 & angularFactor, btVector3 & gravityFactor)
 	{
 		body->setLinearFactor(linearFactor);
 		body->setAngularFactor(angularFactor);
+		body->setGravity(gravityFactor);
 	}
 
-	void GameObject::Set_velocity(btVector3 & velocity)
+	void GameObject::Set_dynamic_velocity(btVector3 & velocity)
 	{
 		body->setLinearVelocity(velocity);
 		body->applyImpulse(body->getLinearVelocity(), btVector3(0.0f, 0.0f, 0.0f));
@@ -78,6 +77,11 @@ namespace bullet
 		body->getMotionState()->getWorldTransform(transform);
 		transform.getOrigin() += velocity;
 		body->getMotionState()->setWorldTransform(transform);
+	}
+
+	void GameObject::Set_kinematic_object()
+	{
+		body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
 	}
 
 	void GameObject::Activate_state()

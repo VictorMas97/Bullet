@@ -18,7 +18,16 @@ namespace bullet
 	void World::stepSimulation(btScalar timeStep)
 	{
 		world->stepSimulation(timeStep);
+		Chack_collisions();
+	}
 
+	void World::reset()
+	{
+		world.reset();
+	}
+
+	void World::Chack_collisions()
+	{
 		int manifold_count = world->getDispatcher()->getNumManifolds();
 
 		for (int i = 0; i < manifold_count; i++)
@@ -42,10 +51,10 @@ namespace bullet
 					if ((game_object_a->body->getUserIndex() == 4 && game_object_b->body->getUserIndex() == 6) || (game_object_a->body->getUserIndex() == 6 && game_object_b->body->getUserIndex() == 4))
 					{
 						game_object_a->active = true;
-						game_object_b->active = true;			
+						game_object_b->active = true;
 					}
 
-				    else if ((game_object_a->body->getUserIndex() == 2 && game_object_b->body->getUserIndex() == 5) || (game_object_a->body->getUserIndex() == 5 && game_object_b->body->getUserIndex() == 2))
+					else if ((game_object_a->body->getUserIndex() == 2 && game_object_b->body->getUserIndex() == 5) || (game_object_a->body->getUserIndex() == 5 && game_object_b->body->getUserIndex() == 2))
 					{
 						game_object_a->active = true;
 						game_object_b->active = true;
@@ -59,11 +68,6 @@ namespace bullet
 				}
 			}
 		}
-	}
-
-	void World::reset()
-	{
-		world.reset();
 	}
 }
 

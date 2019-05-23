@@ -27,12 +27,14 @@ namespace bullet
 
 	public:
 
+		std::shared_ptr< btDiscreteDynamicsWorld > world;
+
 		World(btVector3 gravity);
 
 		void stepSimulation(btScalar timeStep);
 
 		void reset();
 
-		std::shared_ptr< btDiscreteDynamicsWorld > world;
+		void Chack_collisions();
 	};		
 }
