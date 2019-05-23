@@ -29,7 +29,7 @@ namespace bullet
 
 		std::shared_ptr < btRigidBody> body;
 			   
-		std::shared_ptr < glt::Model > model;
+		std::shared_ptr < glt::Model > model;		
 
 		GameObject(btDiscreteDynamicsWorld & world, std::shared_ptr< btCollisionShape > given_shape, const btVector3 & initial_position, int index_tag,
 				   const glt::Vector3 & object_scale = glt::Vector3(0.5f, 1.5f, 1.5f), float mass = 0.f, float bounce = 0.f, const std::string & obj_file_path = "");

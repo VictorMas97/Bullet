@@ -48,22 +48,25 @@ namespace bullet
 
 				if (point.getDistance() < 0.f)
 				{
-					if ((game_object_a->body->getUserIndex() == 4 && game_object_b->body->getUserIndex() == 6) || (game_object_a->body->getUserIndex() == 6 && game_object_b->body->getUserIndex() == 4))
+					if ((game_object_a->body->getUserIndex() == 4 && game_object_b->body->getUserIndex() == 6 && !game_object_a->active) || (game_object_a->body->getUserIndex() == 6 && game_object_b->body->getUserIndex() == 4 && !game_object_a->active))
 					{
 						game_object_a->active = true;
 						game_object_b->active = true;
+						std::cout << "catapult - platformExtra collision" << std::endl;
 					}
 
-					else if ((game_object_a->body->getUserIndex() == 2 && game_object_b->body->getUserIndex() == 5) || (game_object_a->body->getUserIndex() == 5 && game_object_b->body->getUserIndex() == 2))
+					else if ((game_object_a->body->getUserIndex() == 2 && game_object_b->body->getUserIndex() == 5 && !game_object_a->active) || (game_object_a->body->getUserIndex() == 5 && game_object_b->body->getUserIndex() == 2 && !game_object_a->active))
 					{
 						game_object_a->active = true;
 						game_object_b->active = true;
+						std::cout << "platform - doorFloor collision" << std::endl;
 					}
 
-					else if ((game_object_a->body->getUserIndex() == 4 && game_object_b->body->getUserIndex() == 7) || (game_object_a->body->getUserIndex() == 7 && game_object_b->body->getUserIndex() == 4))
+					else if ((game_object_a->body->getUserIndex() == 4 && game_object_b->body->getUserIndex() == 7 && !game_object_b->active) || (game_object_a->body->getUserIndex() == 7 && game_object_b->body->getUserIndex() == 4 && !game_object_b->active))
 					{
 						game_object_a->active = true;
 						game_object_b->active = true;
+						std::cout << "catapult - key collision" << std::endl;
 					}
 				}
 			}

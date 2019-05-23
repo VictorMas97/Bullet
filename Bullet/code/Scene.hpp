@@ -17,7 +17,11 @@ namespace bullet
 
 		std::map<std::string, std::shared_ptr<GameObject>> gameObjects;
 
-		std::map<std::string, std::shared_ptr<GameObject>>::iterator it;
+		std::unique_ptr<btHingeConstraint> constraint;
+
+		float time;   
+
+		float nextShoot;
 
 	public:		
 
