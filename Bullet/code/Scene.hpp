@@ -19,6 +19,8 @@ namespace bullet
 
 		std::unique_ptr<btHingeConstraint> constraint;
 
+		std::unique_ptr<btHingeConstraint> constraint2;
+
 		float time;   
 
 		float nextShoot;

@@ -42,8 +42,10 @@ namespace bullet
 		gameObjects["catapult"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.2f, 0.05f, 0.2f)), btVector3(2.8f, 1.5f, 0.f), 4, glt::Vector3(0.2f, 0.05f, 0.2f), 1.f);
 		gameObjects["catapult"]->Activate_state();
 
-		gameObjects["catapultExtra"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.05f, 0.2f, 0.1f)), btVector3(2.8f, 1.8f, 0.f), 10, glt::Vector3(0.05f, 0.2f, 0.1f), 1.f);
+		gameObjects["catapultExtra"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.05f, 0.05f, 0.1f)), btVector3(2.8f, 1.6f, 0.f), 10, glt::Vector3(0.05f, 0.05f, 0.1f), 1.f);
 
+		gameObjects["catapultExtra2"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.2f, 0.05f, 0.1f)), btVector3(3.0f, 1.7f, 0.f), 11, glt::Vector3(0.2f, 0.05f, 0.1f), 1.f); 
+		
 		gameObjects["platform"] = std::make_shared<GameObject>(*dynamicWorld->world, std::make_shared<btBoxShape>(btVector3(0.3f, 0.1f, 0.5f)), btVector3(1.7f, 1.4f, 0.f), 5, glt::Vector3(0.3f, 0.1f, 0.5f));
 		gameObjects["platform"]->Set_kinematic_object();
 		gameObjects["platform"]->Activate_state();
@@ -62,9 +64,13 @@ namespace bullet
 		
 		#pragma endregion
 
-		constraint.reset (new btHingeConstraint(*gameObjects["catapult"]->body, *gameObjects["catapultExtra"]->body, btVector3(0.0f, 0.0f, 0.0f), btVector3(0.0f, -0.27f, 0.0f), btVector3(0.0f, 1.0f, 0.0f), btVector3(0.0f, 1.0f, 0.0f)));
+		constraint.reset (new btHingeConstraint(*gameObjects["catapult"]->body, *gameObjects["catapultExtra"]->body, btVector3(0.0f, 0.0f, 0.0f), btVector3(0.0f, -0.1f, 0.0f), btVector3(0.0f, 1.0f, 0.0f), btVector3(0.0f, 1.0f, 0.0f)));
 
 		dynamicWorld->world->addConstraint(constraint.get ());
+
+		constraint2.reset(new btHingeConstraint(*gameObjects["catapultExtra"]->body, *gameObjects["catapultExtra2"]->body, btVector3(0.0f, 0.0f, 0.0f), btVector3(-0.15f, -0.1f, 0.0f), btVector3(0.0f, 1.0f, 0.0f), btVector3(0.0f, 1.0f, 0.0f)));
+
+		dynamicWorld->world->addConstraint(constraint2.get());
 
 		for (auto & gameObj : gameObjects)
 		{
