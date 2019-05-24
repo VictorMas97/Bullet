@@ -8,8 +8,6 @@ namespace bullet
 	{
 		std::cout << "Dinamyc world" << std::endl;
 
-		// Create and configure the physiscs world:
-
 		world = std::make_shared<btDiscreteDynamicsWorld>(&collisionDispatcher, &overlappingPairCache, &constraintSolver, &collisionConfiguration);
 
 		world->setGravity(gravity);

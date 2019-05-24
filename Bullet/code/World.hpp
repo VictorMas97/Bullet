@@ -1,3 +1,11 @@
+/**
+* @file World.hpp
+* @author Victor Mas Toledo
+* @date 10/05/2019
+* @class World
+* @brief Clase que se encarga de montar el mundo de bullet, renderizarlo y actualizarlo
+*/
+
 #pragma once
 
 #include <btBulletDynamicsCommon.h>
@@ -8,32 +16,62 @@ namespace bullet
 
 	class World
 	{
-		// Collision configuration contains default setup for memory, collision setup.
-		// Advanced users can create their own configuration.
+
+		/**
+		* @brief "CollisionConfiguration" por defecto
+		*/
 
 		btDefaultCollisionConfiguration collisionConfiguration;
 
-		// Use the default collision dispatcher. For parallel processing you can use a diffent dispatcher (see Extras/BulletMultiThreaded).
+		/**
+		* @brief "CollisionDispatcher" por defecto
+		*/
 
 		btCollisionDispatcher collisionDispatcher;
 
-		// btDbvtBroadphase is a good general purpose broadphase. You can also try out btAxis3Sweep.
+		/**
+		* @brief "Broadphase" por defecto
+		*/
 
 		btDbvtBroadphase overlappingPairCache;
 
-		// The default constraint solver. For parallel processing you can use a different solver (see Extras/BulletMultiThreaded).
+		/**
+		* @brief "ConstraintSolver" por defecto
+		*/	
 
 		btSequentialImpulseConstraintSolver constraintSolver;
 
 	public:
 
+		/**
+		* @brief Puntero inteligente a un "btDiscreteDynamicsWorld"
+		*/	
+
 		std::shared_ptr< btDiscreteDynamicsWorld > world;
+
+		/**
+		* @brief Crea un mundo 
+		* @param gravity -> es la gravedad de dicho mundo
+		*/	
 
 		World(btVector3 gravity);
 
+		/**
+		* @brief Actualiza el mundo cada frame
+		* @param timeStep -> marca cada cuanto tiempo se realiza la actualizacion
+		*/	
+
 		void stepSimulation(btScalar timeStep);
 
+		/**
+		* @brief Resetea el mundo
+		*/	
+
 		void reset();
+
+		/**
+		* @brief Checkea las colisiones del mundo
+		*/	
 
 		void Chack_collisions();
 	};		

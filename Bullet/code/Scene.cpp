@@ -7,7 +7,7 @@ namespace bullet
 	{
 		std::cout << "Scene" << std::endl;
 
-		time = 0.0f;
+		time = 1.0f;
 
 		nextShoot = 1.0f;
 
@@ -64,13 +64,15 @@ namespace bullet
 		
 		#pragma endregion
 
+		#pragma region Constraints
+
 		constraint.reset (new btHingeConstraint(*gameObjects["catapult"]->body, *gameObjects["catapultExtra"]->body, btVector3(0.0f, 0.0f, 0.0f), btVector3(0.0f, -0.1f, 0.0f), btVector3(0.0f, 1.0f, 0.0f), btVector3(0.0f, 1.0f, 0.0f)));
+	    constraint2.reset(new btHingeConstraint(*gameObjects["catapultExtra"]->body, *gameObjects["catapultExtra2"]->body, btVector3(0.0f, 0.0f, 0.0f), btVector3(-0.15f, -0.1f, 0.0f), btVector3(0.0f, 1.0f, 0.0f), btVector3(0.0f, 1.0f, 0.0f)));
 
 		dynamicWorld->world->addConstraint(constraint.get ());
-
-		constraint2.reset(new btHingeConstraint(*gameObjects["catapultExtra"]->body, *gameObjects["catapultExtra2"]->body, btVector3(0.0f, 0.0f, 0.0f), btVector3(-0.15f, -0.1f, 0.0f), btVector3(0.0f, 1.0f, 0.0f), btVector3(0.0f, 1.0f, 0.0f)));
-
 		dynamicWorld->world->addConstraint(constraint2.get());
+
+		#pragma endregion
 
 		for (auto & gameObj : gameObjects)
 		{
@@ -119,7 +121,7 @@ namespace bullet
 		if (gameObjects["catapult"]->active && gameObjects["key"]->active && gameObjects["door"]->body->getCenterOfMassPosition().getY() <= 3.0f)
 		{
 			gameObjects["key"]->model->set_visible(false);
-			//gameObjects["key"]->body->setIgnoreCollisionCheck(gameObjects["key"]->body.get(), true);
+			//gameObjects["key"]->body->setIgnoreCollisionCheck(gameObjects["key"]->body.get(), true); // No se desactivan las colisiones
 			gameObjects["door"]->Set_kinematic_velocity(btVector3(0.0f, 0.1f, 0.0f));
 		}
 
