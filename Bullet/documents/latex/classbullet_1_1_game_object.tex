@@ -1,0 +1,185 @@
+\hypertarget{classbullet_1_1_game_object}{}\section{Referencia de la Clase bullet\+::Game\+Object}
+\label{classbullet_1_1_game_object}\index{bullet::GameObject@{bullet::GameObject}}
+
+
+{\ttfamily \#include $<$Game\+Object.\+hpp$>$}
+
+\subsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbullet_1_1_game_object_a018c661eab06c5d1f1288d1c762231bb}{Game\+Object}} (bt\+Discrete\+Dynamics\+World \&world, std\+::shared\+\_\+ptr$<$ bt\+Collision\+Shape $>$ given\+\_\+shape, const bt\+Vector3 \&initial\+\_\+position, int index\+\_\+tag, const glt\+::\+Vector3 \&object\+\_\+scale=glt\+::\+Vector3(0.\+5f, 1.\+5f, 1.\+5f), float mass=0.\+f, float bounce=0.\+f, const std\+::string \&obj\+\_\+file\+\_\+path=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Contruye un \char`\"{}\+Game\+Object\char`\"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbullet_1_1_game_object_a3380fbf972b0b85f52fde35d3e738b72}{Set\+\_\+physic\+\_\+transform}} ()
+\begin{DoxyCompactList}\small\item\em Unifica el transform fisico al transform grafico. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbullet_1_1_game_object_adee0a608c63fef6cfad7b9f5718e05cc}{Clamp}} (bt\+Vector3 \&linear\+Factor=bt\+Vector3(0.\+0f, 0.\+0f, 0.\+0f), bt\+Vector3 \&angular\+Factor=bt\+Vector3(0.\+0f, 0.\+0f, 0.\+0f), bt\+Vector3 \&gravity\+Factor=bt\+Vector3(0.\+0f, 0.\+0f, 0.\+0f))
+\begin{DoxyCompactList}\small\item\em Limita la velocidad lineal, velocidad angular y la gravedad. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbullet_1_1_game_object_a314ec56ebafc2f20bda02305c63b58e4}{Set\+\_\+dynamic\+\_\+velocity}} (bt\+Vector3 \&velocity)
+\begin{DoxyCompactList}\small\item\em Mueve el objeto dinamico. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbullet_1_1_game_object_ad8a2ae02e95c6ba340be8881417cb9a2}{Set\+\_\+kinematic\+\_\+velocity}} (bt\+Vector3 \&velocity)
+\begin{DoxyCompactList}\small\item\em Mueve el objeto kinematico. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbullet_1_1_game_object_a68d55afbaae12acbedc24ca8c7b373ef}{Set\+\_\+kinematic\+\_\+object}} ()
+\begin{DoxyCompactList}\small\item\em Tranforma a un objeto en kinematico. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbullet_1_1_game_object_a2cc828228600aeb426d17ad1de6cccdf}{Activate\+\_\+state}} ()
+\begin{DoxyCompactList}\small\item\em Activa el estado del objeto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classbullet_1_1_game_object_a04aa167fbe80192ced647543c3e28e7d}{active}} = false
+\begin{DoxyCompactList}\small\item\em Booleano del objeto para algunas colisiones especificas. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ bt\+Rigid\+Body $>$ \mbox{\hyperlink{classbullet_1_1_game_object_a4e052c0aaac34a096654a14d04361b01}{body}}
+\begin{DoxyCompactList}\small\item\em Puntero inteligente al rigidbody. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ glt\+::\+Model $>$ \mbox{\hyperlink{classbullet_1_1_game_object_ae71680005e5766a0f16617ad6c84ba5b}{model}}
+\begin{DoxyCompactList}\small\item\em Puntero inteligente a al modelo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{classbullet_1_1_game_object_a018c661eab06c5d1f1288d1c762231bb}\label{classbullet_1_1_game_object_a018c661eab06c5d1f1288d1c762231bb}} 
+\index{bullet::GameObject@{bullet::GameObject}!GameObject@{GameObject}}
+\index{GameObject@{GameObject}!bullet::GameObject@{bullet::GameObject}}
+\subsubsection{\texorpdfstring{GameObject()}{GameObject()}}
+{\footnotesize\ttfamily Game\+Object\+::\+Game\+Object (\begin{DoxyParamCaption}\item[{bt\+Discrete\+Dynamics\+World \&}]{world,  }\item[{std\+::shared\+\_\+ptr$<$ bt\+Collision\+Shape $>$}]{given\+\_\+shape,  }\item[{const bt\+Vector3 \&}]{initial\+\_\+position,  }\item[{int}]{index\+\_\+tag,  }\item[{const glt\+::\+Vector3 \&}]{object\+\_\+scale = {\ttfamily glt\+:\+:Vector3(0.5f,~1.5f,~1.5f)},  }\item[{float}]{mass = {\ttfamily 0.f},  }\item[{float}]{bounce = {\ttfamily 0.f},  }\item[{const std\+::string \&}]{obj\+\_\+file\+\_\+path = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Contruye un \char`\"{}\+Game\+Object\char`\"{}. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em world} & -\/$>$ referencia al mundo \\
+\hline
+{\em given\+\_\+shape} & -\/$>$ puntro inteligente a la forma de la colision \\
+\hline
+{\em initial\+\_\+position} & -\/$>$ referencia a la posicion inicial \\
+\hline
+{\em index\+\_\+tag} & -\/$>$ numero de objeto \\
+\hline
+{\em object\+\_\+scale} & -\/$>$ escala del objeto, por defecto es \char`\"{}(0.\+5, 1.\+5, 1.\+5)\char`\"{} en los respectivos ejes \\
+\hline
+{\em mass} & -\/$>$ masa, por defecto es 0 \\
+\hline
+{\em bounce} & -\/$>$ rebote, por defecto es 0 \\
+\hline
+{\em obj\+\_\+file\+\_\+path} & -\/$>$ referencia a la ruta del modelo, por defecto esta vacia \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classbullet_1_1_game_object_a2cc828228600aeb426d17ad1de6cccdf}\label{classbullet_1_1_game_object_a2cc828228600aeb426d17ad1de6cccdf}} 
+\index{bullet::GameObject@{bullet::GameObject}!Activate\_state@{Activate\_state}}
+\index{Activate\_state@{Activate\_state}!bullet::GameObject@{bullet::GameObject}}
+\subsubsection{\texorpdfstring{Activate\_state()}{Activate\_state()}}
+{\footnotesize\ttfamily void Game\+Object\+::\+Activate\+\_\+state (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Activa el estado del objeto. 
+
+\mbox{\Hypertarget{classbullet_1_1_game_object_adee0a608c63fef6cfad7b9f5718e05cc}\label{classbullet_1_1_game_object_adee0a608c63fef6cfad7b9f5718e05cc}} 
+\index{bullet::GameObject@{bullet::GameObject}!Clamp@{Clamp}}
+\index{Clamp@{Clamp}!bullet::GameObject@{bullet::GameObject}}
+\subsubsection{\texorpdfstring{Clamp()}{Clamp()}}
+{\footnotesize\ttfamily void Game\+Object\+::\+Clamp (\begin{DoxyParamCaption}\item[{bt\+Vector3 \&}]{linear\+Factor = {\ttfamily btVector3(0.0f,~0.0f,~0.0f)},  }\item[{bt\+Vector3 \&}]{angular\+Factor = {\ttfamily btVector3(0.0f,~0.0f,~0.0f)},  }\item[{bt\+Vector3 \&}]{gravity\+Factor = {\ttfamily btVector3(0.0f,~0.0f,~0.0f)} }\end{DoxyParamCaption})}
+
+
+
+Limita la velocidad lineal, velocidad angular y la gravedad. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em linear\+Factor} & -\/$>$ limitacion de la velocidad lineal, por defecto es 0 en cada eje \\
+\hline
+{\em angular\+Factor} & -\/$>$ limitacion de la velocidad angular, por defecto es 0 en cada eje \\
+\hline
+{\em gravity\+Factor} & -\/$>$ limitacion de la gravedad, por defecto es 0 en cada eje \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classbullet_1_1_game_object_a314ec56ebafc2f20bda02305c63b58e4}\label{classbullet_1_1_game_object_a314ec56ebafc2f20bda02305c63b58e4}} 
+\index{bullet::GameObject@{bullet::GameObject}!Set\_dynamic\_velocity@{Set\_dynamic\_velocity}}
+\index{Set\_dynamic\_velocity@{Set\_dynamic\_velocity}!bullet::GameObject@{bullet::GameObject}}
+\subsubsection{\texorpdfstring{Set\_dynamic\_velocity()}{Set\_dynamic\_velocity()}}
+{\footnotesize\ttfamily void Game\+Object\+::\+Set\+\_\+dynamic\+\_\+velocity (\begin{DoxyParamCaption}\item[{bt\+Vector3 \&}]{velocity }\end{DoxyParamCaption})}
+
+
+
+Mueve el objeto dinamico. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em velocity} & -\/$>$ la velocidad con la que se mueve el objeto \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classbullet_1_1_game_object_a68d55afbaae12acbedc24ca8c7b373ef}\label{classbullet_1_1_game_object_a68d55afbaae12acbedc24ca8c7b373ef}} 
+\index{bullet::GameObject@{bullet::GameObject}!Set\_kinematic\_object@{Set\_kinematic\_object}}
+\index{Set\_kinematic\_object@{Set\_kinematic\_object}!bullet::GameObject@{bullet::GameObject}}
+\subsubsection{\texorpdfstring{Set\_kinematic\_object()}{Set\_kinematic\_object()}}
+{\footnotesize\ttfamily void Game\+Object\+::\+Set\+\_\+kinematic\+\_\+object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Tranforma a un objeto en kinematico. 
+
+\mbox{\Hypertarget{classbullet_1_1_game_object_ad8a2ae02e95c6ba340be8881417cb9a2}\label{classbullet_1_1_game_object_ad8a2ae02e95c6ba340be8881417cb9a2}} 
+\index{bullet::GameObject@{bullet::GameObject}!Set\_kinematic\_velocity@{Set\_kinematic\_velocity}}
+\index{Set\_kinematic\_velocity@{Set\_kinematic\_velocity}!bullet::GameObject@{bullet::GameObject}}
+\subsubsection{\texorpdfstring{Set\_kinematic\_velocity()}{Set\_kinematic\_velocity()}}
+{\footnotesize\ttfamily void Game\+Object\+::\+Set\+\_\+kinematic\+\_\+velocity (\begin{DoxyParamCaption}\item[{bt\+Vector3 \&}]{velocity }\end{DoxyParamCaption})}
+
+
+
+Mueve el objeto kinematico. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em velocity} & -\/$>$ la velocidad con la que se mueve el objeto \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classbullet_1_1_game_object_a3380fbf972b0b85f52fde35d3e738b72}\label{classbullet_1_1_game_object_a3380fbf972b0b85f52fde35d3e738b72}} 
+\index{bullet::GameObject@{bullet::GameObject}!Set\_physic\_transform@{Set\_physic\_transform}}
+\index{Set\_physic\_transform@{Set\_physic\_transform}!bullet::GameObject@{bullet::GameObject}}
+\subsubsection{\texorpdfstring{Set\_physic\_transform()}{Set\_physic\_transform()}}
+{\footnotesize\ttfamily void Game\+Object\+::\+Set\+\_\+physic\+\_\+transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unifica el transform fisico al transform grafico. 
+
+
+
+\subsection{Documentación de los datos miembro}
+\mbox{\Hypertarget{classbullet_1_1_game_object_a04aa167fbe80192ced647543c3e28e7d}\label{classbullet_1_1_game_object_a04aa167fbe80192ced647543c3e28e7d}} 
+\index{bullet::GameObject@{bullet::GameObject}!active@{active}}
+\index{active@{active}!bullet::GameObject@{bullet::GameObject}}
+\subsubsection{\texorpdfstring{active}{active}}
+{\footnotesize\ttfamily bool bullet\+::\+Game\+Object\+::active = false}
+
+
+
+Booleano del objeto para algunas colisiones especificas. 
+
+\mbox{\Hypertarget{classbullet_1_1_game_object_a4e052c0aaac34a096654a14d04361b01}\label{classbullet_1_1_game_object_a4e052c0aaac34a096654a14d04361b01}} 
+\index{bullet::GameObject@{bullet::GameObject}!body@{body}}
+\index{body@{body}!bullet::GameObject@{bullet::GameObject}}
+\subsubsection{\texorpdfstring{body}{body}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ bt\+Rigid\+Body$>$ bullet\+::\+Game\+Object\+::body}
+
+
+
+Puntero inteligente al rigidbody. 
+
+\mbox{\Hypertarget{classbullet_1_1_game_object_ae71680005e5766a0f16617ad6c84ba5b}\label{classbullet_1_1_game_object_ae71680005e5766a0f16617ad6c84ba5b}} 
+\index{bullet::GameObject@{bullet::GameObject}!model@{model}}
+\index{model@{model}!bullet::GameObject@{bullet::GameObject}}
+\subsubsection{\texorpdfstring{model}{model}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ glt\+::\+Model $>$ bullet\+::\+Game\+Object\+::model}
+
+
+
+Puntero inteligente a al modelo. 
+
+
+
+La documentación para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_game_object_8hpp}{Game\+Object.\+hpp}}\item 
+\mbox{\hyperlink{_game_object_8cpp}{Game\+Object.\+cpp}}\end{DoxyCompactItemize}
